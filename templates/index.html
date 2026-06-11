@@ -1,63 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CXBYESFNE4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CXBYESFNE4');
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Under Maintenance</title>
+<title>Shani Store - FF Emote Panel</title>
+<meta name="description" content="Shani Store Free Fire emote panel. Send emotes using UID and team code instantly.">
+<meta name="keywords" content="shani store, free fire emote panel, ff emote, send emote free fire">
 
 <style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#111;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    text-align:center;
+body{background:#000;color:white;font-family:sans-serif;text-align:center;}
+.container{max-width:420px;margin:auto;padding:20px;}
+
+input{
+width:100%;padding:12px;margin:8px 0;
+border-radius:10px;border:none;
+background:#1e293b;color:white;
+box-sizing:border-box;
 }
 
-.box{
-    padding:30px;
-    max-width:500px;
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;margin-top:15px;
+position:relative;
 }
 
-h1{
-    font-size:32px;
-    margin-bottom:15px;
+/* ── MAINTENANCE OVERLAY on the grid ── */
+.grid-overlay{
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.82);
+  border-radius:12px;
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  backdrop-filter:blur(3px);
+  padding:16px;
+}
+.grid-overlay .wrench{font-size:36px;animation:wobble 1.5s infinite;}
+@keyframes wobble{
+  0%,100%{transform:rotate(-10deg);}
+  50%{transform:rotate(10deg);}
+}
+.grid-overlay .overlay-title{
+  font-size:15px;font-weight:bold;color:#facc15;
+  line-height:1.5;
+}
+.grid-overlay .overlay-sub{
+  font-size:12px;color:#94a3b8;
+  line-height:1.6;
 }
 
-p{
-    font-size:18px;
-    color:#ccc;
+.card{
+background:#1e293b;
+padding:6px;border-radius:10px;
+height:120px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+align-items:center;
 }
 
-.loader{
-    width:50px;
-    height:50px;
-    border:5px solid #333;
-    border-top:5px solid #fff;
-    border-radius:50%;
-    margin:25px auto;
-    animation:spin 1s linear infinite;
+.card img{
+width:100%;
+height:55px;
+object-fit:contain;
+opacity:0.4;
+transition:0.3s;
+}
+.card img.loaded{opacity:1;}
+
+.card div{font-size:10px;}
+
+.card button{
+width:95%;
+padding:5px;
+border:none;
+border-radius:6px;
+background:#2563eb;
+color:white;
+font-size:10px;
 }
 
-@keyframes spin{
-    100%{transform:rotate(360deg);}
+.success{background:#16a34a !important;}
+
+#moreBtn{
+margin-top:15px;padding:10px;
+border:none;border-radius:10px;
+background:#dc2626;color:white;width:100%;
+}
+
+.whatsapp-btn{
+background:#25D366;width:100%;
+margin-top:10px;padding:13px;
+border:none;border-radius:10px;color:white;
+font-size:15px;font-weight:bold;
+cursor:pointer;
+display:flex;align-items:center;justify-content:center;gap:8px;
+}
+
+.headshot-btn{
+background:#7c3aed;width:100%;
+margin-top:10px;padding:12px;
+border:none;border-radius:10px;color:white;
+font-size:15px;
+cursor:pointer;
+}
+
+.howtouse-btn{
+background:#7c3aed;width:100%;
+margin-top:10px;padding:12px;
+border:none;border-radius:10px;color:white;
+font-size:15px;
+cursor:pointer;
+}
+
+.follow{margin:15px 0;color:#aaa;font-size:13px;}
+
+.toast{
+position:fixed;top:20px;left:50%;
+transform:translateX(-50%);
+background:#111;padding:10px 15px;
+border-radius:10px;opacity:0;
+transition:0.3s;z-index:999;
+}
+.toast.show{opacity:1}
+
+.switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #1e293b; transition: .4s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #2563eb; }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* Panel popup modal */
+.modal-overlay{
+  display:none;
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.85);
+  z-index:1000;
+  justify-content:center;
+  align-items:center;
+}
+.modal-overlay.active{display:flex;}
+.modal-box{
+  background:#1e293b;
+  border-radius:14px;
+  padding:20px;
+  max-width:380px;
+  width:90%;
+  text-align:center;
+}
+.modal-box iframe{
+  width:100%;
+  height:200px;
+  border-radius:10px;
+  border:none;
+  margin-bottom:12px;
+}
+.modal-box .buy-text{
+  font-size:15px;
+  color:#fff;
+  margin-bottom:14px;
+  line-height:1.8;
+}
+.modal-box .buy-text span{
+  color:#4ade80;
+  font-weight:bold;
+}
+.modal-close{
+  background:#dc2626;
+  color:white;
+  border:none;
+  padding:8px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.android-panel-btn {
+  background: #dc2626 !important;
+  border: 2px solid #ef4444 !important;
+  font-weight: bold !important;
+  letter-spacing: 1px !important;
+}
+
+/* Status badge */
+.status-badge{
+  display:inline-block;
+  background:#1e293b;
+  border:1px solid #facc15;
+  color:#facc15;
+  font-size:11px;
+  padding:4px 12px;
+  border-radius:20px;
+  margin-bottom:10px;
 }
 </style>
 </head>
+
 <body>
 
-<div class="box">
-    <h1>🚧 Website Under Maintenance</h1>
-    <div class="loader"></div>
-    <p>
-        Website kuch time baad open ho jaye gi.<br>
-        Abhi kuch errors aur updates chal rahi hain.
-    </p>
+<div class="container">
+
+  <h1>Shani Store</h1>
+  <h2>FF Emote Panel</h2>
+
+  <div class="status-badge">⚠️ Kuch errors hain — thik ho raha hai</div>
+
+  <input type="text" placeholder="Enter UID" id="uid">
+  <input type="text" placeholder="Enter Team Code" id="code">
+
+  <!-- Emote Grid with maintenance overlay -->
+  <div class="grid" id="emoteGrid">
+
+    <!-- Overlay -->
+    <div class="grid-overlay">
+      <div class="wrench">🔧</div>
+      <div class="overlay-title">Kuch errors hain<br>Kuch dino mein theek ho jayega</div>
+      <div class="overlay-sub">Abhi emotes temporarily<br>unavailable hain. Sorry for inconvenience!</div>
+    </div>
+
+    <!-- Dummy emote cards (blurred behind overlay) -->
+    <div class="card"><img src="" alt=""><div>Emote 1</div><button disabled>Send</button></div>
+    <div class="card"><img src="" alt=""><div>Emote 2</div><button disabled>Send</button></div>
+    <div class="card"><img src="" alt=""><div>Emote 3</div><button disabled>Send</button></div>
+    <div class="card"><img src="" alt=""><div>Emote 4</div><button disabled>Send</button></div>
+    <div class="card"><img src="" alt=""><div>Emote 5</div><button disabled>Send</button></div>
+    <div class="card"><img src="" alt=""><div>Emote 6</div><button disabled>Send</button></div>
+
+  </div>
+
+  <button id="moreBtn" disabled>⏳ Coming Soon...</button>
+
+  <!-- WhatsApp Button -->
+  <button class="whatsapp-btn" onclick="window.open('https://wa.me/923001234567','_blank')">
+    <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp Pe Contact Karo
+  </button>
+
+  <!-- Panel Info Popup Button -->
+  <button class="headshot-btn android-panel-btn" onclick="document.getElementById('panelModal').classList.add('active')">
+    🎮 Panel Ke Baare Mein Jaano
+  </button>
+
+  <p class="follow">Follow us: @prime_shani</p>
+
 </div>
+
+<!-- Panel Popup Modal -->
+<div class="modal-overlay" id="panelModal">
+  <div class="modal-box">
+    <h3 style="margin-top:0;color:#facc15;">Shani Store — FF Emote Panel</h3>
+    <div class="buy-text">
+      🔧 Abhi panel mein <span>kuch errors</span> aa rahi hain.<br>
+      Hum fix kar rahe hain — <span>kuch dino mein</span> sab theek ho jayega!<br><br>
+      📲 Koi bhi kaam ke liye WhatsApp karo:<br>
+      <span>@prime_shani</span>
+    </div>
+    <button class="modal-close" onclick="document.getElementById('panelModal').classList.remove('active')">✖ Close</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 </body>
 </html>
