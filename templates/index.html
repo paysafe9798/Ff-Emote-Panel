@@ -28,27 +28,7 @@ background:#1e293b;color:white;
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:8px;margin-top:15px;
-position:relative;
 }
-
-/* MAINTENANCE OVERLAY - ONLY ADDITION */
-.grid-maintenance{
-  position:absolute;
-  top:0;left:0;right:0;bottom:0;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
-  border-radius:10px;
-  z-index:10;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  pointer-events:all;
-}
-.grid-maintenance p{margin:0;font-size:13px;color:#facc15;font-weight:bold;}
-.grid-maintenance span{font-size:11px;color:#94a3b8;}
 
 .card{
 background:#1e293b;
@@ -195,6 +175,37 @@ input:checked + .slider:before { transform: translateX(26px); }
   font-weight: bold !important;
   letter-spacing: 1px !important;
 }
+
+/* MAINTENANCE WRAPPER */
+.maintenance-wrap{
+  position:relative;
+  margin-top:10px;
+}
+.maintenance-wrap .blur-overlay{
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+  background:rgba(0,0,0,0.45);
+  border-radius:12px;
+  z-index:20;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  user-select:none;
+  pointer-events:all;
+}
+.maintenance-wrap .blur-overlay .msg-box{
+  background:#facc15;
+  color:#000;
+  font-weight:bold;
+  font-size:13px;
+  padding:10px 18px;
+  border-radius:10px;
+  line-height:1.7;
+}
 </style>
 </head>
 
@@ -219,23 +230,29 @@ ID BUY AND SELL GROUP
 📖 How To Use
 </button>
 
-<input id="uid" placeholder="Enter UID">
-<input id="team" placeholder="Enter Team Code" maxlength="7" inputmode="numeric">
+<!-- MAINTENANCE WRAPPER: covers uid, team, nobot, grid -->
+<div class="maintenance-wrap">
 
-<div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:10px 0;">
-  <span>No Bot</span>
-  <label class="switch">
-    <input type="checkbox" id="noBot">
-    <span class="slider"></span>
-  </label>
-</div>
-
-<div class="grid" id="buttons">
-  <!-- MAINTENANCE OVERLAY -->
-  <div class="grid-maintenance">
-    <p>🔧 Kuch errors hain</p>
-    <span>Kuch dino mein theek ho jayega</span>
+  <!-- BLUR OVERLAY -->
+  <div class="blur-overlay">
+    <div class="msg-box">
+      🔧 Isma kuch errors hain<br>Kuch dino mein theek ho jayega
+    </div>
   </div>
+
+  <input id="uid" placeholder="Enter UID">
+  <input id="team" placeholder="Enter Team Code" maxlength="7" inputmode="numeric">
+
+  <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:10px 0;">
+    <span>No Bot</span>
+    <label class="switch">
+      <input type="checkbox" id="noBot">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="grid" id="buttons"></div>
+
 </div>
 
 <button id="moreBtn" onclick="loadMore()">See More</button>
@@ -351,7 +368,7 @@ function loadData(){
 }
 
 function render(){
-  box.innerHTML = '<div class="grid-maintenance"><p>🔧 Kuch errors hain</p><span>Kuch dino mein theek ho jayega</span></div>';
+  box.innerHTML = "";
   for(let item of allData){
     createCard(item.name, item.id, item.image);
   }
