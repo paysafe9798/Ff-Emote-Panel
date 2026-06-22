@@ -6,15 +6,13 @@ import datetime
 app = Flask(__name__, template_folder="templates")
 app.secret_key = "secret123"
 
-session_req = requests.Session()
-
-# Browser headers for the API
+# Browser headers (still used for the new API)
 BROWSER_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Mobile Safari/537.36",
     "Accept": "*/*",
     "Accept-Language": "en-US,en;q=0.9",
     "Content-Type": "application/json",
-    "Origin": "https://ffemote.com",
+    "Origin": "https://ffemote.com",          # may not be needed, but kept
     "Referer": "https://ffemote.com/"
 }
 
@@ -77,7 +75,6 @@ def logs_data():
     if not session.get("admin"):
         return "Unauthorized"
 
-    # Return plain text lines with newlines (no <br> tags)
     output = []
     for t, msg in reversed(logs):  # newest first
         output.append(msg)
@@ -109,42 +106,37 @@ def unblock():
 
     return redirect("/admin")
 
-# ---------- SEND ----------
+# ---------- SEND (UPDATED API) ----------
 @app.route("/send", methods=["POST"])
 def send():
     uid = request.form.get("uid")
     team = request.form.get("team")
     emote = str(request.form.get("emote")).strip()
-    # Get the No Bot toggle value from the form (defaults to false)
-    no_bot = request.form.get("no_bot", "false").lower() == "true"
+    # no_bot is ignored – new API doesn't support it
+    # no_bot = request.form.get("no_bot", "false").lower() == "true"
 
     if uid in blocked_uids:
         add_log(team, uid, "BLOCKED")
         return jsonify({"status": "blocked"})
 
     try:
-        session_req.post(
-            "https://ffemote.com/validate_passwords",
-            json={"yt_password": "B25", "tg_password": "B25"},
-            headers=BROWSER_HEADERS,
-            timeout=10
-        )
+        # New API: GET request with query parameters
+        params = {
+            "tc": team,            # team code
+            "uid1": uid,           # single UID (uid2..uid6 omitted)
+            "emote_id": emote
+        }
 
-        r = session_req.post(
-            "https://ffemote.com/send_emote",
-            json={
-                "server": "pakistan",
-                "team_code": team,
-                "emote_id": emote,
-                "uids": [uid],
-                "auto_leave": no_bot   # true if "No Bot" is toggled on
-            },
+        r = requests.get(
+            "https://emoteapi-5lobbyapi.stargmr.pro/api/public/join",
+            params=params,
             headers=BROWSER_HEADERS,
             timeout=10
         )
 
         response_text = r.text.strip()
-        
+
+        # Consider success if status 200 and response contains "success" (adjust as needed)
         if r.status_code == 200 and "success" in r.text.lower():
             add_log(team, uid, f"SUCCESS - {response_text}")
             return jsonify({"status": "success"})
