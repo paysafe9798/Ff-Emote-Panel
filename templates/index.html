@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html translate="no">
+<html>
 <head>
-<meta name="google" content="notranslate">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXBYESFNE4"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CXBYESFNE4');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CXBYESFNE4');
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,87 +124,56 @@ input:checked + .slider { background-color: #2563eb; }
 input:checked + .slider:before { transform: translateX(26px); }
 
 .modal-overlay{
-  display:none;
-  position:fixed;top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.85);
-  z-index:1000;
-  justify-content:center;
-  align-items:center;
+  display:none;
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.85);
+  z-index:1000;
+  justify-content:center;
+  align-items:center;
 }
 .modal-overlay.active{display:flex;}
 .modal-box{
-  background:#1e293b;
-  border-radius:14px;
-  padding:20px;
-  max-width:380px;
-  width:90%;
-  text-align:center;
+  background:#1e293b;
+  border-radius:14px;
+  padding:20px;
+  max-width:380px;
+  width:90%;
+  text-align:center;
 }
 .modal-box iframe{
-  width:100%;
-  height:200px;
-  border-radius:10px;
-  border:none;
-  margin-bottom:12px;
+  width:100%;
+  height:200px;
+  border-radius:10px;
+  border:none;
+  margin-bottom:12px;
 }
 .modal-box .buy-text{
-  font-size:15px;
-  color:#fff;
-  margin-bottom:14px;
-  line-height:1.8;
+  font-size:15px;
+  color:#fff;
+  margin-bottom:14px;
+  line-height:1.8;
 }
 .modal-box .buy-text span{
-  color:#4ade80;
-  font-weight:bold;
+  color:#4ade80;
+  font-weight:bold;
 }
 .modal-close{
-  background:#dc2626;
-  color:white;
-  border:none;
-  padding:8px 20px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:14px;
+  background:#dc2626;
+  color:white;
+  border:none;
+  padding:8px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
 }
 
 /* Android Panel Button - Red */
 .android-panel-btn {
-  background: #dc2626 !important;
-  border: 2px solid #ef4444 !important;
-  font-weight: bold !important;
-  letter-spacing: 1px !important;
-}
-
-/* MAINTENANCE WRAPPER */
-.maintenance-wrap{
-  position:relative;
-  margin-top:10px;
-}
-.maintenance-wrap .blur-overlay{
-  position:absolute;
-  top:0;left:0;right:0;bottom:0;
-  backdrop-filter:blur(5px);
-  -webkit-backdrop-filter:blur(5px);
-  background:rgba(0,0,0,0.45);
-  border-radius:12px;
-  z-index:20;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  user-select:none;
-  pointer-events:all;
-}
-.maintenance-wrap .blur-overlay .msg-box{
-  background:#facc15;
-  color:#000;
-  font-weight:bold;
-  font-size:13px;
-  padding:10px 18px;
-  border-radius:10px;
-  line-height:1.7;
+  background: #dc2626 !important;
+  border: 2px solid #ef4444 !important;
+  font-weight: bold !important;
+  letter-spacing: 1px !important;
 }
 </style>
 </head>
@@ -219,42 +187,30 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 <p style="font-size:12px;color:#aaa;">SAFE BUT STILL USE ON YOUR ON RISK</p>
 
-<button class="whatsapp-btn" onclick="window.open('https://chat.whatsapp.com/BaF7qluLma8DUWHbBbsttZ')">
+<button class="whatsapp-btn" onclick="window.open('https://chat.whatsapp.com/Ls2oqFuIl6I6zcelfR3FZj')">
 ID BUY AND SELL GROUP
 </button>
 
 <button class="headshot-btn android-panel-btn" onclick="openHeadshotPanel()">
-  🎯 ANDROID PANEL
+  🎯 ANDROID PANEL
 </button>
 
 <button class="howtouse-btn" onclick="openHowToUse()">
 📖 How To Use
 </button>
 
-<!-- MAINTENANCE WRAPPER: covers uid, team, nobot, grid -->
-<div class="maintenance-wrap">
+<input id="uid" placeholder="Enter UID">
+<input id="team" placeholder="Enter Team Code" maxlength="7" inputmode="numeric">
 
-  <!-- BLUR OVERLAY -->
-  <div class="blur-overlay">
-    <div class="msg-box">
-      🔧 Isma kuch errors hain<br>Kuch dino mein theek ho jayega
-    </div>
-  </div>
-
-  <input id="uid" placeholder="Enter UID">
-  <input id="team" placeholder="Enter Team Code" maxlength="7" inputmode="numeric">
-
-  <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:10px 0;">
-    <span>No Bot</span>
-    <label class="switch">
-      <input type="checkbox" id="noBot">
-      <span class="slider"></span>
-    </label>
-  </div>
-
-  <div class="grid" id="buttons"></div>
-
+<div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:10px 0;">
+  <span>No Bot</span>
+  <label class="switch">
+    <input type="checkbox" id="noBot">
+    <span class="slider"></span>
+  </label>
 </div>
+
+<div class="grid" id="buttons"></div>
 
 <button id="moreBtn" onclick="loadMore()">See More</button>
 
@@ -262,93 +218,95 @@ ID BUY AND SELL GROUP
 
 <!-- ANDROID PANEL POPUP -->
 <div class="modal-overlay" id="headshotModal">
-  <div class="modal-box">
-    <iframe id="ytFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <div class="buy-text">
-      • WHATSAPP <span>03349039174</span><br>
-      • PRICE <span>800</span><br>
-      • Br Cs Working
-    </div>
-    <button class="modal-close" onclick="closeHeadshotPanel()">Close ✕</button>
-  </div>
+  <div class="modal-box">
+    <iframe id="ytFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="buy-text">
+      • WHATSAPP <span>03349039174</span><br>
+      • 1 GAME SAFE<br>
+      • PRICE <span>500</span><br>
+      • Br Cs Working
+    </div>
+    <button class="modal-close" onclick="closeHeadshotPanel()">Close ✕</button>
+  </div>
 </div>
 
 <!-- How To Use Popup -->
 <div class="modal-overlay" id="howToUseModal">
-  <div class="modal-box">
-    <iframe id="howToUseFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <div class="buy-text">
-      <span>How To Use</span><br>
-      Watch The Video To Learn
-    </div>
-    <button class="modal-close" onclick="closeHowToUse()">Close ✕</button>
-  </div>
+  <div class="modal-box">
+    <iframe id="howToUseFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="buy-text">
+      <span>How To Use</span><br>
+      Watch The Video To Learn
+    </div>
+    <button class="modal-close" onclick="closeHowToUse()">Close ✕</button>
+  </div>
 </div>
 
-<!-- STARTUP POPUP - NOW REPLACED WITH ANDROID PANEL VIDEO & TEXT (same as android panel popup) -->
+<!-- STARTUP POPUP -->
 <div class="modal-overlay active" id="startupModal">
-  <div class="modal-box">
-    <iframe
-      id="startupFrame"
-      src="https://www.youtube.com/embed/TA-I319Hvq8?autoplay=1&mute=1"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
-    <div class="buy-text">
-      • WHATSAPP <span>03349039174</span><br>
-      • PRICE <span>800</span><br>
-      • Br Cs Working
-    </div>
-    <button class="modal-close" onclick="closeStartupModal()">Close ✕</button>
-  </div>
+  <div class="modal-box">
+    <iframe
+      id="startupFrame"
+      src="https://www.youtube.com/embed/rBeySG_2XAU?autoplay=1&mute=1"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+    <div class="buy-text">
+      • WHATSAPP <span>03349039174</span><br>
+      • 1 GAME SAFE<br>
+      • PRICE <span>500</span><br>
+      • Br Cs Working
+    </div>
+    <button class="modal-close" onclick="closeStartupModal()">Close ✕</button>
+  </div>
 </div>
 
 <div id="toast" class="toast"></div>
 
 <script>
 function openHeadshotPanel(){
-  document.getElementById("ytFrame").src = "https://www.youtube.com/embed/TA-I319Hvq8?autoplay=1";
-  document.getElementById("headshotModal").classList.add("active");
+  document.getElementById("ytFrame").src = "https://www.youtube.com/embed/rBeySG_2XAU?autoplay=1";
+  document.getElementById("headshotModal").classList.add("active");
 }
 function closeHeadshotPanel(){
-  document.getElementById("ytFrame").src = "";
-  document.getElementById("headshotModal").classList.remove("active");
+  document.getElementById("ytFrame").src = "";
+  document.getElementById("headshotModal").classList.remove("active");
 }
 document.getElementById("headshotModal").addEventListener("click", function(e){
-  if(e.target === this) closeHeadshotPanel();
+  if(e.target === this) closeHeadshotPanel();
 });
 
 function openHowToUse(){
-  document.getElementById("howToUseFrame").src = "https://www.youtube.com/embed/FkdxnfP8hL4?autoplay=1";
-  document.getElementById("howToUseModal").classList.add("active");
+  document.getElementById("howToUseFrame").src = "https://www.youtube.com/embed/FkdxnfP8hL4?autoplay=1";
+  document.getElementById("howToUseModal").classList.add("active");
 }
 function closeHowToUse(){
-  document.getElementById("howToUseFrame").src = "";
-  document.getElementById("howToUseModal").classList.remove("active");
+  document.getElementById("howToUseFrame").src = "";
+  document.getElementById("howToUseModal").classList.remove("active");
 }
 document.getElementById("howToUseModal").addEventListener("click", function(e){
-  if(e.target === this) closeHowToUse();
+  if(e.target === this) closeHowToUse();
 });
 
 function closeStartupModal(){
-  document.getElementById("startupFrame").src = "";
-  document.getElementById("startupModal").classList.remove("active");
+  document.getElementById("startupFrame").src = "";
+  document.getElementById("startupModal").classList.remove("active");
 }
 document.getElementById("startupModal").addEventListener("click", function(e){
-  if(e.target === this) closeStartupModal();
+  if(e.target === this) closeStartupModal();
 });
 
 let lastSendTime = {};
 
 document.getElementById("team").addEventListener("input", function(){
-  this.value = this.value.replace(/\D/g, "").slice(0,7);
+  this.value = this.value.replace(/\D/g, "").slice(0,7);
 });
 
 function showToast(msg){
-  let t = document.getElementById("toast");
-  t.innerText = msg;
-  t.classList.add("show");
-  setTimeout(() => { t.classList.remove("show"); }, 2000);
+  let t = document.getElementById("toast");
+  t.innerText = msg;
+  t.classList.add("show");
+  setTimeout(() => { t.classList.remove("show"); }, 2000);
 }
 
 let allData = [];
@@ -358,76 +316,80 @@ let limit = 20;
 loadData();
 
 function loadData(){
-  fetch("/static/final_links.json")
-  .then(res => res.json())
-  .then(data => {
-    allData = data.slice(0, limit);
-    render();
-  });
+  fetch("/static/final_links.json")
+  .then(res => res.json())
+  .then(data => {
+    allData = data.slice(0, limit);
+    render();
+  });
 }
 
 function render(){
-  box.innerHTML = "";
-  for(let item of allData){
-    createCard(item.name, item.id, item.image);
-  }
+  box.innerHTML = "";
+  for(let item of allData){
+    createCard(item.name, item.id, item.image);
+  }
 }
 
 function createCard(name, id, imgUrl){
-  let card = document.createElement("div");
-  card.className = "card";
-  let img = document.createElement("img");
-  img.src = "https://via.placeholder.com/100x60?text=...";
-  img.loading = "lazy";
-  let realImg = new Image();
-  realImg.src = imgUrl;
-  realImg.onload = () => { img.src = realImg.src; img.classList.add("loaded"); };
-  let nameDiv = document.createElement("div");
-  nameDiv.innerText = name;
-  let btn = document.createElement("button");
-  btn.innerText = "Send";
-  btn.onclick = () => { sendEmote(id, btn); };
-  card.appendChild(img);
-  card.appendChild(nameDiv);
-  card.appendChild(btn);
-  box.appendChild(card);
+  let card = document.createElement("div");
+  card.className = "card";
+  let img = document.createElement("img");
+  img.src = "https://via.placeholder.com/100x60?text=...";
+  img.loading = "lazy";
+  let realImg = new Image();
+  realImg.src = imgUrl;
+  realImg.onload = () => { img.src = realImg.src; img.classList.add("loaded"); };
+  let nameDiv = document.createElement("div");
+  nameDiv.innerText = name;
+  let btn = document.createElement("button");
+  btn.innerText = "Send";
+  btn.onclick = () => { sendEmote(id, btn); };
+  card.appendChild(img);
+  card.appendChild(nameDiv);
+  card.appendChild(btn);
+  box.appendChild(card);
 }
 
 async function sendEmote(id, btn){
-  let uid = document.getElementById("uid").value;
-  let team = document.getElementById("team").value;
-  if(!uid || !team){ showToast("Enter UID & Team Code"); return; }
-  let now = Date.now() / 1000;
-  if(lastSendTime[uid] && (now - lastSendTime[uid]) < 1){
-    let wait = (1 - (now - lastSendTime[uid])).toFixed(1);
-    showToast(`Please wait ${wait} seconds before sending again ⏱️`);
-    return;
-  }
-  lastSendTime[uid] = now;
-  let original = btn.innerText;
-  btn.innerHTML = '<div class="spinner"></div>';
-  btn.disabled = true;
-  let noBot = document.getElementById("noBot").checked;
-  try{
-    let r = await fetch("/send", {
-      method: "POST",
-      headers: {"Content-Type": "application/x-www-form-urlencoded"},
-      body: `uid=${uid}&team=${team}&emote=${id}&no_bot=${noBot}`
-    });
-    let d = await r.json();
-    if(d.status === "success"){ btn.innerText = "✔ Sent"; btn.classList.add("success"); showToast("Success ✅"); }
-    else if(d.status === "blocked") showToast("You are Blocked ❌");
-    else if(d.status === "fail") showToast("Failed to send ❌");
-    else showToast("Error ❌");
-  } catch(e){ showToast("Server Error ❌"); }
-  setTimeout(() => { btn.innerText = original; btn.disabled = false; btn.classList.remove("success"); }, 1500);
+  let uid = document.getElementById("uid").value;
+  let team = document.getElementById("team").value;
+  if(!uid || !team){ showToast("Enter UID & Team Code"); return; }
+  let now = Date.now() / 1000;
+  if(lastSendTime[uid] && (now - lastSendTime[uid]) < 1){
+    let wait = (1 - (now - lastSendTime[uid])).toFixed(1);
+    showToast(
+Please wait ${wait} seconds before sending again ⏱️
+);
+    return;
+  }
+  lastSendTime[uid] = now;
+  let original = btn.innerText;
+  btn.innerHTML = '<div class="spinner"></div>';
+  btn.disabled = true;
+  let noBot = document.getElementById("noBot").checked;
+  try{
+    let r = await fetch("/send", {
+      method: "POST",
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
+      body: 
+uid=${uid}&team=${team}&emote=${id}&no_bot=${noBot}
+
+    });
+    let d = await r.json();
+    if(d.status === "success"){ btn.innerText = "✔ Sent"; btn.classList.add("success"); showToast("Success ✅"); }
+    else if(d.status === "blocked") showToast("You are Blocked ❌");
+    else if(d.status === "fail") showToast("Failed to send ❌");
+    else showToast("Error ❌");
+  } catch(e){ showToast("Server Error ❌"); }
+  setTimeout(() => { btn.innerText = original; btn.disabled = false; btn.classList.remove("success"); }, 1500);
 }
 
 function loadMore(){
-  limit += 50;
-  loadData();
+  limit += 50;
+  loadData();
 }
 </script>
 
 </body>
-</html>
+                                                                          </html>
