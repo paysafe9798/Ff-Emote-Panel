@@ -1,374 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Shani Store • FF Emote Panel</title>
-  <meta name="description" content="Shani Store Free Fire emote panel. Send emotes using UID and team code instantly.">
-  <meta name="keywords" content="shani store, free fire emote panel, ff emote, send emote free fire">
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXBYESFNE4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXBYESFNE4');
-  </script>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      background: #0b0f15;
-      color: white;
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 15px;
-    }
-    .container {
-      max-width: 450px;
-      margin: 0 auto;
-      padding: 15px 10px 25px;
-    }
-    h1 {
-      font-size: 2.2rem;
-      margin: 5px 0 0;
-      letter-spacing: 1px;
-      color: #f1f5f9;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.6);
-    }
-    h2 {
-      font-weight: 500;
-      font-size: 1.2rem;
-      margin: 5px 0 15px;
-      color: #94a3b8;
-    }
-    .risk-text {
-      font-size: 0.8rem;
-      color: #f87171;
-      background: rgba(239, 68, 68, 0.15);
-      padding: 6px 12px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 20px;
-      border: 1px solid #ef4444;
-      font-weight: 500;
-    }
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CXBYESFNE4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CXBYESFNE4');
+</script>
 
-    input {
-      width: 100%;
-      padding: 14px 16px;
-      margin: 8px 0;
-      border-radius: 14px;
-      border: 1px solid #334155;
-      background: #1e293b;
-      color: #f8fafc;
-      font-size: 16px;
-      outline: none;
-      transition: 0.2s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    input:focus {
-      border-color: #3b82f6;
-      background: #1e293b;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shani Store - FF Emote Panel</title>
+<meta name="description" content="Shani Store Free Fire emote panel. Send emotes using UID and team code instantly.">
+<meta name="keywords" content="shani store, free fire emote panel, ff emote, send emote free fire">
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin: 20px 0 15px;
-    }
+<style>
+body{background:#000;color:white;font-family:sans-serif;text-align:center;}
+.container{max-width:420px;margin:auto;padding:20px;}
 
-    .card {
-      background: #1e293b;
-      padding: 10px 6px 8px;
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.5);
-      border: 1px solid #334155;
-      transition: transform 0.1s ease;
-    }
+input{
+width:100%;padding:12px;margin:8px 0;
+border-radius:10px;border:none;
+background:#1e293b;color:white;
+}
 
-    .card img {
-      width: 100%;
-      height: 60px;
-      object-fit: contain;
-      opacity: 0.45;
-      transition: opacity 0.3s ease;
-      margin-bottom: 5px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.02);
-    }
-    .card img.loaded {
-      opacity: 1;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;margin-top:15px;
+}
 
-    .card div {
-      font-size: 11px;
-      font-weight: 600;
-      color: #cbd5e1;
-      margin: 4px 0 6px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100%;
-    }
+.card{
+background:#1e293b;
+padding:6px;border-radius:10px;
+height:120px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+align-items:center;
+}
 
-    .card button {
-      width: 100%;
-      padding: 8px 5px;
-      border: none;
-      border-radius: 20px;
-      background: #2563eb;
-      color: white;
-      font-weight: bold;
-      font-size: 12px;
-      letter-spacing: 0.4px;
-      cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 4px 10px rgba(37,99,235,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 32px;
-    }
-    .card button:active { transform: scale(0.96); }
+.card img{
+width:100%;
+height:55px;
+object-fit:contain;
+opacity:0.4;
+transition:0.3s;
+}
+.card img.loaded{opacity:1;}
 
-    .success {
-      background: #16a34a !important;
-      box-shadow: 0 0 12px #16a34a;
-    }
+.card div{font-size:10px;}
 
-    #moreBtn {
-      margin: 15px 0 20px;
-      padding: 14px;
-      border: none;
-      border-radius: 30px;
-      background: #b91c1c;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-      width: 100%;
-      letter-spacing: 0.8px;
-      transition: 0.2s;
-      box-shadow: 0 6px 14px rgba(185,28,28,0.5);
-    }
+.card button{
+width:95%;
+padding:5px;
+border:none;
+border-radius:6px;
+background:#2563eb;
+color:white;
+font-size:10px;
+}
 
-    .action-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 20px 0 15px;
-    }
-    .whatsapp-btn, .headshot-btn, .howtouse-btn {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 30px;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    }
-    .whatsapp-btn { background: #dc2626; }
-    .headshot-btn { background: #7c3aed; } /* android panel */
-    .howtouse-btn { background: #0f172a; border: 1px solid #7c3aed; color: #c4b5fd; }
+.success{background:#16a34a !important;}
 
-    .follow {
-      margin: 10px 0 5px;
-      color: #94a3b8;
-      font-size: 13px;
-    }
+#moreBtn{
+margin-top:15px;padding:10px;
+border:none;border-radius:10px;
+background:#dc2626;color:white;width:100%;
+}
 
-    .toast {
-      position: fixed;
-      top: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #0f172a;
-      padding: 12px 24px;
-      border-radius: 40px;
-      opacity: 0;
-      transition: 0.3s;
-      z-index: 2000;
-      font-weight: 500;
-      border: 1px solid #475569;
-      box-shadow: 0 10px 25px black;
-    }
-    .toast.show { opacity: 1; }
+.whatsapp-btn{
+background:#dc2626;width:100%;
+margin-top:10px;padding:12px;
+border:none;border-radius:10px;color:white;
+}
 
-    .spinner {
-      width: 18px; height: 18px;
-      border: 2.5px solid rgba(255,255,255,0.3);
-      border-top: 2.5px solid white;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: auto;
-    }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.headshot-btn{
+background:#7c3aed;width:100%;
+margin-top:10px;padding:12px;
+border:none;border-radius:10px;color:white;
+font-size:15px;
+cursor:pointer;
+}
 
-    .switch { position: relative; display: inline-block; width: 52px; height: 26px; }
-    .switch input { opacity: 0; width: 0; height: 0; }
-    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #1e293b; transition: .4s; border-radius: 26px; border: 1px solid #475569; }
-    .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
-    input:checked + .slider { background-color: #2563eb; border-color: #2563eb; }
-    input:checked + .slider:before { transform: translateX(24px); }
+.howtouse-btn{
+background:#7c3aed;width:100%;
+margin-top:10px;padding:12px;
+border:none;border-radius:10px;color:white;
+font-size:15px;
+cursor:pointer;
+}
 
-    .no-bot-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 15px 0 5px;
-      background: #1e293b;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-weight: 500;
-    }
+.follow{margin:15px 0;color:#aaa;font-size:13px;}
 
-    /* Modal overlays */
-    .modal-overlay {
-      display: none;
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-overlay.active { display: flex; }
+.toast{
+position:fixed;top:20px;left:50%;
+transform:translateX(-50%);
+background:#111;padding:10px 15px;
+border-radius:10px;opacity:0;
+transition:0.3s;
+}
+.toast.show{opacity:1}
 
-    .modal-box {
-      background: #1e293b;
-      border-radius: 24px;
-      padding: 20px 16px;
-      max-width: 360px;
-      width: 90%;
-      text-align: center;
-      border: 1px solid #334155;
-    }
-    .modal-box iframe {
-      width: 100%;
-      height: 190px;
-      border-radius: 16px;
-      border: none;
-      margin-bottom: 16px;
-    }
-    .buy-text { font-size: 15px; color: #e2e8f0; margin: 10px 0 18px; line-height: 1.7; }
-    .buy-text span { color: #4ade80; font-weight: bold; }
-    .modal-close {
-      background: #dc2626;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-      font-size: 15px;
-    }
+.spinner{
+width:14px;height:14px;
+border:2px solid rgba(255,255,255,0.3);
+border-top:2px solid white;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:auto;
+}
 
-    /* EMOTE SECTION OVERLAY (maintenance block) */
-    .emote-blocked-overlay {
-      position: relative;
-      border-radius: 24px;
-      margin-top: 5px;
-    }
-    .block-overlay-emote {
-      display: flex;
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(8px);
-      z-index: 20;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border-radius: 20px;
-      border: 2px solid #ef4444;
-      box-shadow: 0 0 30px rgba(239,68,68,0.5);
-      text-align: center;
-      padding: 20px;
-    }
-    .block-overlay-emote h1 {
-      font-size: 2rem;
-      color: #ef4444;
-      margin-bottom: 8px;
-      text-shadow: 0 0 10px red;
-    }
-    .block-overlay-emote p {
-      font-size: 1rem;
-      color: #cbd5e1;
-    }
-  </style>
+@keyframes spin{
+0%{transform:rotate(0)}
+100%{transform:rotate(360deg)}
+}
+
+.switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #1e293b; transition: .4s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #2563eb; }
+input:checked + .slider:before { transform: translateX(26px); }
+
+.modal-overlay{
+  display:none;
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.85);
+  z-index:1000;
+  justify-content:center;
+  align-items:center;
+}
+.modal-overlay.active{display:flex;}
+.modal-box{
+  background:#1e293b;
+  border-radius:14px;
+  padding:20px;
+  max-width:380px;
+  width:90%;
+  text-align:center;
+}
+.modal-box iframe{
+  width:100%;
+  height:200px;
+  border-radius:10px;
+  border:none;
+  margin-bottom:12px;
+}
+.modal-box .buy-text{
+  font-size:15px;
+  color:#fff;
+  margin-bottom:14px;
+  line-height:1.8;
+}
+.modal-box .buy-text span{
+  color:#4ade80;
+  font-weight:bold;
+}
+.modal-close{
+  background:#dc2626;
+  color:white;
+  border:none;
+  padding:8px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+/* Android Panel Button - Red */
+.android-panel-btn {
+  background: #dc2626 !important;
+  border: 2px solid #ef4444 !important;
+  font-weight: bold !important;
+  letter-spacing: 1px !important;
+}
+
+/* BLOCK OVERLAY */
+.block-overlay{
+  display:flex;
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  background:#000;
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.block-overlay h1{
+  font-size:28px;
+  color:#ef4444;
+  margin-bottom:10px;
+}
+.block-overlay p{
+  font-size:16px;
+  color:#aaa;
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-  <h1>SHANI STORE</h1>
-  <h2>⚡ FF EMOTE PANEL</h2>
-  <div class="risk-text">⚠️ SAFE BUT USE AT YOUR OWN RISK</div>
-
-  <!-- Action buttons (no overlay) -->
-  <div class="action-buttons">
-    <button class="whatsapp-btn" onclick="window.open('https://chat.whatsapp.com/BaF7qluLma8DUWHbBbsttZ')">
-      💬 ID BUY & SELL GROUP
-    </button>
-    <button class="headshot-btn android-panel-btn" onclick="openHeadshotPanel()">
-      🤖 ANDROID PANEL
-    </button>
-    <button class="howtouse-btn" onclick="openHowToUse()">
-      📖 HOW TO USE
-    </button>
-  </div>
-
-  <!-- Input fields (no overlay) -->
-  <input id="uid" placeholder="Enter UID" inputmode="numeric">
-  <input id="team" placeholder="Enter Team Code" maxlength="7" inputmode="numeric">
-
-  <div class="no-bot-row">
-    <span>🤖 No Bot</span>
-    <label class="switch">
-      <input type="checkbox" id="noBot">
-      <span class="slider"></span>
-    </label>
-  </div>
-
-  <!-- EMOTE SECTION WITH MAINTENANCE OVERLAY ONLY HERE -->
-  <div class="emote-blocked-overlay" style="position: relative; margin-top: 15px;">
-    <!-- The maintenance overlay covering only emote grid + more button -->
-    <div class="block-overlay-emote" id="blockOverlayEmote">
-      <h1>🚫 MAINTENANCE</h1>
-      <p>Emote section temporarily unavailable</p>
-    </div>
-    
-    <!-- Emote grid (behind overlay) -->
-    <div class="grid" id="buttons"></div>
-    <button id="moreBtn" onclick="loadMore()">📂 SEE MORE</button>
-  </div>
-
-  <div class="follow">🔹 follow for updates</div>
+<!-- BLOCK OVERLAY -->
+<div class="block-overlay" id="blockOverlay">
+  <h1>🚫 Site Under Maintenance</h1>
+  <p>Please try again later.</p>
 </div>
 
-<!-- ANDROID PANEL MODAL -->
+<div class="container">
+
+<h1>Shani Store</h1>
+<h2>FF Emote Panel</h2>
+
+<p style="font-size:12px;color:#aaa;">SAFE BUT STILL USE ON YOUR ON RISK</p>
+
+<!-- WhatsApp link updated -->
+<button class="whatsapp-btn" onclick="window.open('https://chat.whatsapp.com/BaF7qluLma8DUWHbBbsttZ')">
+ID BUY AND SELL GROUP
+</button>
+
+<button class="headshot-btn android-panel-btn" onclick="openHeadshotPanel()">
+  🎯 ANDROID PANEL
+</button>
+
+<button class="howtouse-btn" onclick="openHowToUse()">
+📖 How To Use
+</button>
+
+<input id="uid" placeholder="Enter UID">
+<input id="team" placeholder="Enter Team Code" maxlength="7" inputmode="numeric">
+
+<div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:10px 0;">
+  <span>No Bot</span>
+  <label class="switch">
+    <input type="checkbox" id="noBot">
+    <span class="slider"></span>
+  </label>
+</div>
+
+<div class="grid" id="buttons"></div>
+
+<button id="moreBtn" onclick="loadMore()">See More</button>
+
+</div>
+
+<!-- ANDROID PANEL POPUP -->
 <div class="modal-overlay" id="headshotModal">
   <div class="modal-box">
+    <!-- Android panel video updated to TA-I319Hvq8 -->
     <iframe id="ytFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div class="buy-text">
       • WHATSAPP <span>03349039174</span><br>
       • 1 GAME SAFE<br>
+      <!-- Price updated to 800 -->
       • PRICE <span>800</span><br>
       • Br Cs Working
     </div>
@@ -376,22 +260,32 @@
   </div>
 </div>
 
-<!-- HOW TO USE MODAL -->
+<!-- How To Use Popup -->
 <div class="modal-overlay" id="howToUseModal">
   <div class="modal-box">
     <iframe id="howToUseFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <div class="buy-text"><span>How To Use</span><br>Watch the video tutorial</div>
+    <div class="buy-text">
+      <span>How To Use</span><br>
+      Watch The Video To Learn
+    </div>
     <button class="modal-close" onclick="closeHowToUse()">Close ✕</button>
   </div>
 </div>
 
-<!-- STARTUP POPUP (separate, not maintenance) -->
+<!-- STARTUP POPUP -->
 <div class="modal-overlay active" id="startupModal">
   <div class="modal-box">
-    <iframe id="startupFrame" src="https://www.youtube.com/embed/TA-I319Hvq8?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <!-- Startup video updated to TA-I319Hvq8 -->
+    <iframe
+      id="startupFrame"
+      src="https://www.youtube.com/embed/TA-I319Hvq8?autoplay=1&mute=1"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
     <div class="buy-text">
       • WHATSAPP <span>03349039174</span><br>
       • 1 GAME SAFE<br>
+      <!-- Price updated to 800 -->
       • PRICE <span>800</span><br>
       • Br Cs Working
     </div>
@@ -402,166 +296,129 @@
 <div id="toast" class="toast"></div>
 
 <script>
-  (function() {
-    // ----- modal controls -----
-    window.openHeadshotPanel = function() {
-      document.getElementById("ytFrame").src = "https://www.youtube.com/embed/TA-I319Hvq8?autoplay=1";
-      document.getElementById("headshotModal").classList.add("active");
-    };
-    window.closeHeadshotPanel = function() {
-      document.getElementById("ytFrame").src = "";
-      document.getElementById("headshotModal").classList.remove("active");
-    };
-    document.getElementById("headshotModal").addEventListener("click", function(e) {
-      if (e.target === this) closeHeadshotPanel();
+function openHeadshotPanel(){
+  // Android panel video updated to TA-I319Hvq8
+  document.getElementById("ytFrame").src = "https://www.youtube.com/embed/TA-I319Hvq8?autoplay=1";
+  document.getElementById("headshotModal").classList.add("active");
+}
+function closeHeadshotPanel(){
+  document.getElementById("ytFrame").src = "";
+  document.getElementById("headshotModal").classList.remove("active");
+}
+document.getElementById("headshotModal").addEventListener("click", function(e){
+  if(e.target === this) closeHeadshotPanel();
+});
+
+function openHowToUse(){
+  document.getElementById("howToUseFrame").src = "https://www.youtube.com/embed/FkdxnfP8hL4?autoplay=1";
+  document.getElementById("howToUseModal").classList.add("active");
+}
+function closeHowToUse(){
+  document.getElementById("howToUseFrame").src = "";
+  document.getElementById("howToUseModal").classList.remove("active");
+}
+document.getElementById("howToUseModal").addEventListener("click", function(e){
+  if(e.target === this) closeHowToUse();
+});
+
+function closeStartupModal(){
+  document.getElementById("startupFrame").src = "";
+  document.getElementById("startupModal").classList.remove("active");
+}
+document.getElementById("startupModal").addEventListener("click", function(e){
+  if(e.target === this) closeStartupModal();
+});
+
+let lastSendTime = {};
+
+document.getElementById("team").addEventListener("input", function(){
+  this.value = this.value.replace(/\D/g, "").slice(0,7);
+});
+
+function showToast(msg){
+  let t = document.getElementById("toast");
+  t.innerText = msg;
+  t.classList.add("show");
+  setTimeout(() => { t.classList.remove("show"); }, 2000);
+}
+
+let allData = [];
+let box = document.getElementById("buttons");
+let limit = 20;
+
+loadData();
+
+function loadData(){
+  fetch("/static/final_links.json")
+  .then(res => res.json())
+  .then(data => {
+    allData = data.slice(0, limit);
+    render();
+  });
+}
+
+function render(){
+  box.innerHTML = "";
+  for(let item of allData){
+    createCard(item.name, item.id, item.image);
+  }
+}
+
+function createCard(name, id, imgUrl){
+  let card = document.createElement("div");
+  card.className = "card";
+  let img = document.createElement("img");
+  img.src = "https://via.placeholder.com/100x60?text=...";
+  img.loading = "lazy";
+  let realImg = new Image();
+  realImg.src = imgUrl;
+  realImg.onload = () => { img.src = realImg.src; img.classList.add("loaded"); };
+  let nameDiv = document.createElement("div");
+  nameDiv.innerText = name;
+  let btn = document.createElement("button");
+  btn.innerText = "Send";
+  btn.onclick = () => { sendEmote(id, btn); };
+  card.appendChild(img);
+  card.appendChild(nameDiv);
+  card.appendChild(btn);
+  box.appendChild(card);
+}
+
+async function sendEmote(id, btn){
+  let uid = document.getElementById("uid").value;
+  let team = document.getElementById("team").value;
+  if(!uid || !team){ showToast("Enter UID & Team Code"); return; }
+  let now = Date.now() / 1000;
+  if(lastSendTime[uid] && (now - lastSendTime[uid]) < 1){
+    let wait = (1 - (now - lastSendTime[uid])).toFixed(1);
+    showToast(`Please wait ${wait} seconds before sending again ⏱️`);
+    return;
+  }
+  lastSendTime[uid] = now;
+  let original = btn.innerText;
+  btn.innerHTML = '<div class="spinner"></div>';
+  btn.disabled = true;
+  let noBot = document.getElementById("noBot").checked;
+  try{
+    let r = await fetch("/send", {
+      method: "POST",
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
+      body: `uid=${uid}&team=${team}&emote=${id}&no_bot=${noBot}`
     });
+    let d = await r.json();
+    if(d.status === "success"){ btn.innerText = "✔ Sent"; btn.classList.add("success"); showToast("Success ✅"); }
+    else if(d.status === "blocked") showToast("You are Blocked ❌");
+    else if(d.status === "fail") showToast("Failed to send ❌");
+    else showToast("Error ❌");
+  } catch(e){ showToast("Server Error ❌"); }
+  setTimeout(() => { btn.innerText = original; btn.disabled = false; btn.classList.remove("success"); }, 1500);
+}
 
-    window.openHowToUse = function() {
-      document.getElementById("howToUseFrame").src = "https://www.youtube.com/embed/FkdxnfP8hL4?autoplay=1";
-      document.getElementById("howToUseModal").classList.add("active");
-    };
-    window.closeHowToUse = function() {
-      document.getElementById("howToUseFrame").src = "";
-      document.getElementById("howToUseModal").classList.remove("active");
-    };
-    document.getElementById("howToUseModal").addEventListener("click", function(e) {
-      if (e.target === this) closeHowToUse();
-    });
-
-    window.closeStartupModal = function() {
-      document.getElementById("startupFrame").src = "";
-      document.getElementById("startupModal").classList.remove("active");
-    };
-    document.getElementById("startupModal").addEventListener("click", function(e) {
-      if (e.target === this) closeStartupModal();
-    });
-
-    // ----- toast -----
-    function showToast(msg) {
-      const t = document.getElementById("toast");
-      t.innerText = msg;
-      t.classList.add("show");
-      setTimeout(() => { t.classList.remove("show"); }, 2000);
-    }
-
-    // restrict team code to digits
-    document.getElementById("team").addEventListener("input", function(e) {
-      this.value = this.value.replace(/\D/g, "").slice(0,7);
-    });
-
-    // ----- emote data & rendering (overlay stays on top) -----
-    let allData = [];
-    const box = document.getElementById("buttons");
-    let limit = 20;
-    let lastSendTime = {};
-
-    function loadData() {
-      fetch("/static/final_links.json")
-        .then(res => res.json())
-        .then(data => {
-          allData = data.slice(0, limit);
-          render();
-        })
-        .catch(() => {
-          // fallback dummy data if json missing
-          allData = [
-            { name: "Emote1", id: "101", image: "https://via.placeholder.com/100x60/1e293b/fff?text=E1" },
-            { name: "Emote2", id: "102", image: "https://via.placeholder.com/100x60/1e293b/fff?text=E2" },
-            { name: "Emote3", id: "103", image: "https://via.placeholder.com/100x60/1e293b/fff?text=E3" }
-          ];
-          render();
-        });
-    }
-
-    function render() {
-      box.innerHTML = "";
-      allData.forEach(item => createCard(item.name, item.id, item.image));
-    }
-
-    function createCard(name, id, imgUrl) {
-      const card = document.createElement("div");
-      card.className = "card";
-      
-      const img = document.createElement("img");
-      img.src = "https://via.placeholder.com/100x60/0f172a/64748b?text=...";
-      img.loading = "lazy";
-      const realImg = new Image();
-      realImg.src = imgUrl;
-      realImg.onload = () => { img.src = realImg.src; img.classList.add("loaded"); };
-      realImg.onerror = () => { img.src = "https://via.placeholder.com/100x60/1e293b/94a3b8?text=Emote"; img.classList.add("loaded"); };
-      
-      const nameDiv = document.createElement("div");
-      nameDiv.innerText = name;
-      
-      const btn = document.createElement("button");
-      btn.innerText = "Send";
-      btn.onclick = (e) => { e.stopPropagation(); sendEmote(id, btn); };
-      
-      card.appendChild(img);
-      card.appendChild(nameDiv);
-      card.appendChild(btn);
-      box.appendChild(card);
-    }
-
-    async function sendEmote(id, btn) {
-      const uid = document.getElementById("uid").value.trim();
-      const team = document.getElementById("team").value.trim();
-      if (!uid || !team) {
-        showToast("❌ Enter UID & Team Code");
-        return;
-      }
-      const now = Date.now() / 1000;
-      if (lastSendTime[uid] && (now - lastSendTime[uid]) < 1.2) {
-        let wait = (1.2 - (now - lastSendTime[uid])).toFixed(1);
-        showToast(`⏳ Wait ${wait}s before sending again`);
-        return;
-      }
-      lastSendTime[uid] = now;
-      
-      const originalText = btn.innerText;
-      btn.innerHTML = '<div class="spinner"></div>';
-      btn.disabled = true;
-      
-      const noBot = document.getElementById("noBot").checked;
-      try {
-        const r = await fetch("/send", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `uid=${encodeURIComponent(uid)}&team=${encodeURIComponent(team)}&emote=${encodeURIComponent(id)}&no_bot=${noBot}`
-        });
-        const d = await r.json();
-        if (d.status === "success") {
-          btn.innerText = "✔ Sent";
-          btn.classList.add("success");
-          showToast("✅ Emote sent!");
-        } else if (d.status === "blocked") {
-          showToast("⛔ You are blocked");
-        } else if (d.status === "fail") {
-          showToast("❌ Failed to send");
-        } else {
-          showToast("⚠️ Error");
-        }
-      } catch (e) {
-        showToast("🌐 Server error");
-      }
-      setTimeout(() => {
-        btn.innerText = originalText;
-        btn.disabled = false;
-        btn.classList.remove("success");
-      }, 1800);
-    }
-
-    window.loadMore = function() {
-      limit += 50;
-      loadData();
-    };
-
-    // initial load
-    loadData();
-
-    // Keep overlay permanently visible on emote section (no removal)
-    // The block overlay remains static; no close function attached.
-  })();
+function loadMore(){
+  limit += 50;
+  loadData();
+}
 </script>
+
 </body>
 </html>
