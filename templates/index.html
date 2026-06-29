@@ -188,13 +188,17 @@ input:checked + .slider:before { transform: translateX(26px); }
 <p style="font-size:12px;color:#aaa;">SAFE BUT STILL USE ON YOUR ON RISK</p>
 
 <!-- WhatsApp link updated -->
+<!--
 <button class="whatsapp-btn" onclick="window.open('https://chat.whatsapp.com/BaF7qluLma8DUWHbBbsttZ')">
 ID BUY AND SELL GROUP
 </button>
+-->
 
+<!--
 <button class="headshot-btn android-panel-btn" onclick="openHeadshotPanel()">
   🎯 ANDROID PANEL
 </button>
+-->
 
 <button class="howtouse-btn" onclick="openHowToUse()">
 📖 How To Use
@@ -218,20 +222,22 @@ ID BUY AND SELL GROUP
 </div>
 
 <!-- ANDROID PANEL POPUP -->
+<!--
 <div class="modal-overlay" id="headshotModal">
   <div class="modal-box">
-    <!-- Android panel video updated to TA-I319Hvq8 -->
+    [ Android panel video updated to TA-I319Hvq8 ]
     <iframe id="ytFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div class="buy-text">
       • WHATSAPP <span>03362908727</span><br>
       • 1 GAME SAFE<br>
-      <!-- Price updated to 800 -->
+      [ Price updated to 800 ]
       • PRICE <span>800</span><br>
       • Br Cs Working
     </div>
     <button class="modal-close" onclick="closeHeadshotPanel()">Close ✕</button>
   </div>
 </div>
+-->
 
 <!-- How To Use Popup -->
 <div class="modal-overlay" id="howToUseModal">
@@ -246,9 +252,10 @@ ID BUY AND SELL GROUP
 </div>
 
 <!-- STARTUP POPUP -->
+<!--
 <div class="modal-overlay active" id="startupModal">
   <div class="modal-box">
-    <!-- Startup video updated to TA-I319Hvq8 -->
+    [ Startup video updated to TA-I319Hvq8 ]
     <iframe
       id="startupFrame"
       src="https://www.youtube.com/embed/TA-I319Hvq8?autoplay=1&mute=1"
@@ -258,13 +265,14 @@ ID BUY AND SELL GROUP
     <div class="buy-text">
       • WHATSAPP <span>03362908727</span><br>
       • 1 GAME SAFE<br>
-      <!-- Price updated to 800 -->
+      [ Price updated to 800 ]
       • PRICE <span>800</span><br>
       • Br Cs Working
     </div>
     <button class="modal-close" onclick="closeStartupModal()">Close ✕</button>
   </div>
 </div>
+-->
 
 <div id="toast" class="toast"></div>
 
@@ -278,9 +286,11 @@ function closeHeadshotPanel(){
   document.getElementById("ytFrame").src = "";
   document.getElementById("headshotModal").classList.remove("active");
 }
+/*
 document.getElementById("headshotModal").addEventListener("click", function(e){
   if(e.target === this) closeHeadshotPanel();
 });
+*/
 
 function openHowToUse(){
   document.getElementById("howToUseFrame").src = "https://www.youtube.com/embed/FkdxnfP8hL4?autoplay=1";
@@ -298,9 +308,11 @@ function closeStartupModal(){
   document.getElementById("startupFrame").src = "";
   document.getElementById("startupModal").classList.remove("active");
 }
+/*
 document.getElementById("startupModal").addEventListener("click", function(e){
   if(e.target === this) closeStartupModal();
 });
+*/
 
 let lastSendTime = {};
 
